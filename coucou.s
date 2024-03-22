@@ -3,9 +3,14 @@ section .text
     extern printf
     
 _coucou:
-    lea rdi, coucou_text
-    call printf
+    push rbp
+    mov rbp, rsp
+
+    lea rdi, [rel coucou_text]  
+    call printf  
+
+    leave             
     ret
 
 section .data
-    coucou_text db "coucou", 10
+    coucou_text db "coucou", 10, 0 
