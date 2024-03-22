@@ -8,8 +8,8 @@ section .text
 _str_len:
     push rbp
     mov rbp, rsp
+
     mov rsi, 0
-    lea rdi, string
     .loop
         mov al , [rdi + rsi]
         cmp al, 0
@@ -18,11 +18,11 @@ _str_len:
         jmp .loop
     
     .end_string:
+        mov rax, rsi
         mov rdi, format 
-        call printf  
-    leave
+        call printf 
+        leave 
     ret
 
 section .data
     format db "Length: %d", 10
-    string db "Hello, World!", 10, 0

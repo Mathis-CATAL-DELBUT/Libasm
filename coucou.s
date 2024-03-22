@@ -9,7 +9,7 @@ _coucou:
     lea rdi, [rel coucou_text]  
     call printf  
 
-    leave             
+    leave
     ret
 
 section .data

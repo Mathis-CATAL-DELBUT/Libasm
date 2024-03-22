@@ -39,10 +39,16 @@ _main:
     call _coucou
     call _separator
 
+    lea rdi, [first_string]
     call _str_len
+
+    mov rdi, format
+    mov rsi, rax
+    call printf
 
     ;mov rdi, rax
     ;call printf
 
     leave
+
     ret
