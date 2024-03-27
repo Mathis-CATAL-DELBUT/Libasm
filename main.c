@@ -181,6 +181,174 @@ void ft_test_strcmp()
 	ft_strcmp("\f", "\f") == strcmp("\f", "\f") ? printf(" ✅\n") : printf(" ❌\n");
 	printf("ft_strcmp : %d || strcmp : %d", ft_strcmp("\r", "\r"), strcmp("\r", "\r"));
 	ft_strcmp("\r", "\r") == strcmp("\r", "\r") ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strcmp : %d || strcmp : %d", ft_strcmp("a", "z"), strcmp("a", "z"));
+	ft_strcmp("a", "z") == strcmp("a", "z") ? printf(" ✅\n") : printf(" ❌\n");
+}
+
+void ft_test_write()
+{
+	printf("\n\n###################   ft_write   ###################\n");
+	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "Hello", 5), write(1, "Hello", 5));
+	ft_write(1, "Hello", 5) == write(1, "Hello", 5) ? printf(" ✅\n") : printf(" ❌\n");
+	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "coucou", 6), write(1, "coucou", 6));
+	ft_write(1, "coucou", 6) == write(1, "coucou", 6) ? printf(" ✅\n") : printf(" ❌\n");
+	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "123456789", 9), write(1, "123456789", 9));
+	ft_write(1, "123456789", 9) == write(1, "123456789", 9) ? printf(" ✅\n") : printf(" ❌\n");
+	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, " ", 1), write(1, " ", 1));
+	ft_write(1, " ", 1) == write(1, " ", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "ca va", 5), write(1, "ca va", 5));
+	ft_write(1, "ca va", 5) == write(1, "ca va", 5) ? printf(" ✅\n") : printf(" ❌\n");
+	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "c'est moi", 9), write(1, "c'est moi", 9));
+	ft_write(1, "c'est moi", 9) == write(1, "c'est moi", 9) ? printf(" ✅\n") : printf(" ❌\n");
+	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "c'est moi aussi", 15), write(1, "c'est moi aussi", 15));
+	ft_write(1, "c'est moi aussi", 15) == write(1, "c'est moi aussi", 15) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\a", 1), write(1, "\a", 1));
+	ft_write(1, "\a", 1) == write(1, "\a", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\b", 1), write(1, "\b", 1));
+	ft_write(1, "\b", 1) == write(1, "\b", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\t", 1), write(1, "\t", 1));
+	ft_write(1, "\t", 1) == write(1, "\t", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\n", 1), write(1, "\n", 1));
+	ft_write(1, "\n", 1) == write(1, "\n", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\v", 1), write(1, "\v", 1));
+	ft_write(1, "\v", 1) == write(1, "\v", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\f", 1), write(1, "\f", 1));
+	ft_write(1, "\f", 1) == write(1, "\f", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\r", 1), write(1, "\r", 1));
+	ft_write(1, "\r", 1) == write(1, "\r", 1) ? printf(" ✅\n") : printf(" ❌\n");
+}
+
+void ft_test_read()
+{
+	char	buf[100];
+	printf("\n\n###################   ft_read   ###################\n");
+	ssize_t	ft_read_value = ft_read(0, buf, 100);
+	ssize_t read_value = read(0, buf, 100);
+	printf("ft_read : %zd || read : %zd ", ft_read_value, read_value);
+	ft_read_value == read_value ? printf(" ✅\n") : printf(" ❌\n");
+}
+
+
+static void	do_test(char *path)
+{
+	char	buf[2][100];
+	int		ori[2];
+	int		ft[2];
+	int		fd;
+
+	memset(&buf, 0, sizeof(char [2][100]));
+	fd = open(path, O_RDONLY);
+	ori[0] = read(fd, buf[0], 50);
+	ori[1] = errno;
+	close(fd);
+	fd = open(path, O_RDONLY);
+	ft[0] = ft_read(fd, buf[1], 50);
+	ft[1] = errno;
+	close(fd);
+	if ((strcmp(buf[1], buf[0]) != 0) || (ori[0] != ft[0]) || (ori[1] != ft[1]))
+		printf("ft_read with %s file ❌\n", path);
+	else
+		printf("ft_read with %s file ✅\n", path);
+}
+
+void	ft_main_read(void)
+{
+	printf("\n\n###################   ft_read   ###################\n");
+	do_test("./Makefile");
+	do_test("./NotExist");
+	do_test("./main.c");
+	do_test("./empty.txt");
+}
+
+void ft_test_strdup()
+{
+	printf("\n\n###################   ft_strdup   ###################\n");
+	char	*str1 = "Hello";
+	char	*str2 = "coucou";
+	char	*str3 = "123456789";
+	char	*str4 = " ";
+	char	*str5 = "ca va";
+	char	*str6 = "c'est moi";
+	char	*str7 = "c'est moi aussi";
+	char	*str8 = "\a";
+	char	*str9 = "\b";
+	char	*str10 = "\t";
+	char	*str11 = "\n";
+	char	*str12 = "\v";
+	char	*str13 = "\f";
+	char	*str14 = "\r";
+
+	char	*strcp1 = ft_strdup(str1);
+	char	*strcp2 = ft_strdup(str2);
+	char	*strcp3 = ft_strdup(str3);
+	char	*strcp4 = ft_strdup(str4);
+	char	*strcp5 = ft_strdup(str5);
+	char	*strcp6 = ft_strdup(str6);
+	char	*strcp7 = ft_strdup(str7);
+	char	*strcp8 = ft_strdup(str8);
+	char	*strcp9 = ft_strdup(str9);
+	char	*strcp10 = ft_strdup(str10);
+	char	*strcp11 = ft_strdup(str11);
+	char	*strcp12 = ft_strdup(str12);
+	char	*strcp13 = ft_strdup(str13);
+	char	*strcp14 = ft_strdup(str14);
+
+	printf("ft_strdup : %s || strdup : %s", strcp1, strdup(str1));
+	strcmp(strcp1, strdup(str1)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp2, strdup(str2));
+	strcmp(strcp2, strdup(str2)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp3, strdup(str3));
+	strcmp(strcp3, strdup(str3)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp4, strdup(str4));
+	strcmp(strcp4, strdup(str4)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp5, strdup(str5));
+	strcmp(strcp5, strdup(str5)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp6, strdup(str6));
+	strcmp(strcp6, strdup(str6)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp7, strdup(str7));
+	strcmp(strcp7, strdup(str7)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp8, strdup(str8));
+	strcmp(strcp8, strdup(str8)) == 0 ? printf(" ✅\n") : printf(" ❌\n");	
+
+	printf("ft_strdup : %s || strdup : %s", strcp9, strdup(str9));
+	strcmp(strcp9, strdup(str9)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp10, strdup(str10));
+	strcmp(strcp10, strdup(str10)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp11, strdup(str11));
+	strcmp(strcp11, strdup(str11)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp12, strdup(str12));
+	strcmp(strcp12, strdup(str12)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp13, strdup(str13));
+	strcmp(strcp13, strdup(str13)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp14, strdup(str14));
+	strcmp(strcp14, strdup(str14)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	free(strcp1);
+	free(strcp2);
+	free(strcp3);
+	free(strcp4);
+	free(strcp5);
+	free(strcp6);
+	free(strcp7);
+	free(strcp8);
+	free(strcp9);
+	free(strcp10);
+	free(strcp11);
+	free(strcp12);
+	free(strcp13);
+	free(strcp14);
 }
 
 int	main(void)
@@ -188,5 +356,9 @@ int	main(void)
     ft_test_strlen();
 	ft_test_strcpy();
 	ft_test_strcmp();
+	ft_test_write();
+	ft_test_strdup();
+	// ft_test_read();
+	ft_main_read();
 	return (0);
 }	
