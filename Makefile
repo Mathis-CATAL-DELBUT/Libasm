@@ -1,36 +1,34 @@
 NAME = libasm.a
-SRCS_ASM_LIB = coucou.s str_len.s
-SRCS_ASM_MAIN = main.s
-OBJS_ASM = $(addprefix obj/,$(SRCS_ASM_LIB:.s=.o))
-OBJ_MAIN = obj/main.o
-PTO = obj/*.o
 
+SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s
+OBJS = $(addprefix obj/,$(SRCS:.s=.o)) 
+
+CC = gcc
 NASM = nasm
-RM = rm -rf
-LD = ld
-LD_FLAGS = -lc -dynamic-linker /lib64/ld-linux-x86-64.so.2
+CFLAGS = -Wall -Wextra -Werror
+LIB = -L. -lasm
 
-all: $(NAME)
 
-obj/%.o : %.s
-	mkdir -p obj && $(NASM) -f elf64 -g $< -o $@
+all: obj $(NAME)
 
-$(NAME): $(OBJS_ASM)
-	ar rcs $(NAME) $(OBJS_ASM)
+obj:
+	mkdir -p obj
 
-$(OBJ_MAIN): $(SRCS_ASM_MAIN)
-	mkdir -p obj && $(NASM) -f elf64 -g $< -o $@
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+obj/%.o: %.s
+	$(NASM) -f elf64 -o $@ $<
+
+main: obj $(NAME)
+	$(CC) $(CFLAGS) -o main main.c obj/ft_strlen.o obj/ft_strcpy.o $(LIB)
 
 clean:
-	$(RM) $(OBJS_ASM) $(PTO) obj
+	rm -rf obj libasm.h.gch .gdb_history peda-session-main.txt
 
 fclean: clean
-	$(RM) $(NAME) libasm
+	rm -f $(NAME) libasm main
 
-launch: $(NAME) $(OBJ_MAIN)
-	$(NASM) -f elf64 $(SRCS_ASM_MAIN) -o $(OBJ_MAIN)
-	$(LD) $(OBJ_MAIN) $(OBJS_ASM) -L. -lasm $(LD_FLAGS) -o libasm
+re: fclean all
 
-re : fclean $(NAME)
-
-.PHONY: all clean fclean re launch
+.PHONY: all clean fclean re main
