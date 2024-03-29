@@ -15,5 +15,5 @@ ft_strlen:
 
     .end_string:
         mov rax, rsi            ; rax = i
-        leave                       ; on nettoie la pile === pop rbp
+        leave                   ; on nettoie la pile === pop rbp
         ret

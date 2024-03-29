@@ -11,8 +11,7 @@ ft_strcpy:
         mov al, [rsi + rbx]     ; al = src[i]
         cmp al, 0               ; si src[i] == 0
         je .end_loop            ; alors on sort de la boucle    
-        mov dl, al              ; dl = src[i]
-        mov [rdi + rbx], dl     ; dest[i] = src[i]
+        mov [rdi + rbx], al     ; dest[i] = src[i]
         inc rbx                 ; i++
         jmp .loop               ; on retourne au debut de la boucle
 
