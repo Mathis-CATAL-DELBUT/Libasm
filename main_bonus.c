@@ -80,36 +80,167 @@ int	atoi_base(char *str, char *base)
 	return (0);
 }
 
-static void	do_test(char *s, char *base)
+void	ft_test_atoi_base(void)
 {
+	printf("\n\n###################   ft_atoi_base   ###################\n");
 	int	ori;
 	int	ft;
 
-	ft = ft_atoi_base(s, base);
-	ori = atoi_base(s, base);
+	ft = ft_atoi_base(" \t\v\r\n\f+-abc", "abcdefghij");
+	ori = atoi_base(" \t\v\r\n\f+-abc", "abcdefghij");
+	if (ori != ft)
+		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
+	else
+		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
+
+	ft = ft_atoi_base("34343434343434", "01234567");
+	ori = atoi_base("34343434343434", "01234567");
+	if (ori != ft)
+		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
+	else
+		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
+	
+	ft = ft_atoi_base("424242", "424242");
+	ori = atoi_base("424242", "424242");
+	if (ori != ft)
+		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
+	else
+		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
+
+	ft = ft_atoi_base("424242", "42");
+	ori = atoi_base("424242", "42");
+	if (ori != ft)
+		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
+	else
+		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
+
+	ft = ft_atoi_base("NO BASE!!!", "");
+	ori = atoi_base("NO BASE!!!", "");
+	if (ori != ft)
+		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
+	else
+		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
+
+	ft = ft_atoi_base("INCLUDE WHITESPACE!!!", " \t\v\r\n\f+-");
+	ori = atoi_base("INCLUDE WHITESPACE!!!", " \t\v\r\n\f+-");
+	if (ori != ft)
+		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
+	else
+		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
+
+	ft = ft_atoi_base(" a", " a");
+	ori = atoi_base(" a", " a");
+	if (ori != ft)
+		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
+	else
+		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
+
+	ft = ft_atoi_base("1234", "");
+	ori = atoi_base("1234", "");
+	if (ori != ft)
+		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
+	else
+		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
+
+	ft = ft_atoi_base("1234", "0");
+	ori = atoi_base("1234", "0");
+	if (ori != ft)
+		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
+	else
+		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
+
+	ft = ft_atoi_base("1234", "01");
+	ori = atoi_base("1234", "01");
 	if (ori != ft)
 		printf("ft_atoi_base : %d || atoi_base : %d ❌\n", ft, ori);
 	else
 		printf("ft_atoi_base : %d || atoi_base : %d ✅\n", ft, ori);
 }
 
-void	ft_test_atoi_base(void)
+void	ft_clear_lst(t_list *lst)
 {
-	printf("\n\n###################   ft_atoi_base   ###################\n");
-	do_test(" \t\v\r\n\f+-abc", "abcdefghij");
-	do_test("34343434343434", "01234567");
-	do_test("424242", "424242");
-	do_test("424242", "42");
-	do_test("NO BASE!!!", "");
-	do_test("INCLUDE WHITESPACE!!!", " \t\v\r\n\f+-");
-	do_test(" a", " a");
-	do_test("1234", "");
-	do_test("1234", "0");
-	do_test("1234", "01");
+	t_list	*tmp;
+
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst);
+		lst = tmp;
+	}
+}
+
+
+void	ft_test_list_push_front(void)
+{
+	printf("\n\n###################   ft_list_push_front   ###################\n");
+	const char	*data = "data";
+	t_list		*list;
+	t_list		*list_old;
+
+	list = malloc(sizeof(t_list));
+	if (list == NULL)
+		return;
+	list_old = list;
+	list->next = 0;
+	ft_list_push_front(&list, (void *)data);
+	if (list == list_old || list->data != data || list->next != list_old)
+		printf("ft_list_push_front : ❌\n");
+	else
+		printf("ft_list_push_front : ✅\n");
+	ft_clear_lst(list);
+}
+
+void	ft_test_list_size(void)
+{
+	printf("\n\n###################   ft_list_size   ###################\n");
+	t_list	*list;
+	int		size;
+
+	list = malloc(sizeof(t_list));
+	if (list == NULL)
+		return;
+	list->data = (void *)"data";
+	list->next = 0;
+	size = ft_list_size(list);
+	if (size != 1)
+		printf("ft_list_size : %d || list size : %d ❌\n", size, 1);
+	else
+		printf("ft_list_size : %d || list size : %d ✅\n", size, 1);
+
+	ft_list_push_front(&list, (void *)"data");
+	size = ft_list_size(list);
+	if (size != 2)
+		printf("ft_list_size : %d || list size : %d ❌\n", size, 2);
+	else
+		printf("ft_list_size : %d || list size : %d ✅\n", size, 2);
+
+	ft_list_push_front(&list, (void *)"data");
+	size = ft_list_size(list);
+	if (size != 3)
+		printf("ft_list_size : %d || list size : %d ❌\n", size, 3);
+	else
+		printf("ft_list_size : %d || list size : %d ✅\n", size, 3);
+
+	ft_list_push_front(&list, (void *)"data");
+	size = ft_list_size(list);
+	if (size != 4)
+		printf("ft_list_size : %d || list size : %d ❌\n", size, 4);
+	else
+		printf("ft_list_size : %d || list size : %d ✅\n", size, 4);
+
+	ft_list_push_front(&list, (void *)"data");
+	size = ft_list_size(list);
+	if (size != 5)
+		printf("ft_list_size : %d || list size : %d ❌\n", size, 5);
+	else
+		printf("ft_list_size : %d || list size : %d ✅\n", size, 5);
+	ft_clear_lst(list);
 }
 
 int	main(void)
 {
 	ft_test_atoi_base();
+	ft_test_list_push_front();
+	ft_test_list_size();
 	return (0);
 }

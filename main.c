@@ -34,13 +34,15 @@ void    ft_test_strlen(void)
 	strcmp((char[]){ft_strlen("\f"), '\0'}, (char[]){strlen("\f"), '\0'}) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 	printf("ft_strlen : %ld || strlen : %ld", ft_strlen("\r"), strlen("\r"));
 	strcmp((char[]){ft_strlen("\r"), '\0'}, (char[]){strlen("\r"), '\0'}) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strlen : %ld || strlen : %ld", ft_strlen(long_string), strlen(long_string));
+	strcmp((char[]){ft_strlen(long_string), '\0'}, (char[]){strlen(long_string), '\0'}) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 }
 
 void	ft_test_strcpy()
 {
 	char	*ft_strcp;
 	char	*strcp;
-	char	dest[20];
+	char	dest[1000];
 	char	str1[] = "COUCOU";
 	char	str2[] = "HEY";
 	char	str3[] = "              ";
@@ -64,89 +66,96 @@ void	ft_test_strcpy()
 	printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str2);
+	ft_strcp = ft_strcpy(dest, str2);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str2);
+	strcp = strcpy(dest, str2);
 	printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str3);
+	ft_strcp = ft_strcpy(dest, str3);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str3);
+	strcp = strcpy(dest, str3);
 	printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str4);
+	ft_strcp = ft_strcpy(dest, str4);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str4);
+	strcp = strcpy(dest, str4);
 	printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str5);
+	ft_strcp = ft_strcpy(dest, str5);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str5);
+	strcp = strcpy(dest, str5);
 	printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str6);
+	ft_strcp = ft_strcpy(dest, str6);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str6);
+	strcp = strcpy(dest, str6);
 	printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str7);
+	ft_strcp = ft_strcpy(dest, str7);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str7);
+	strcp = strcpy(dest, str7);
 	printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str8);
+	ft_strcp = ft_strcpy(dest, str8);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str8);
+	strcp = strcpy(dest, str8);
 	// printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	printf("whith \\a caractere : ");
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str9);
+	ft_strcp = ft_strcpy(dest, str9);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str9);
+	strcp = strcpy(dest, str9);
 	// printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	printf("whith \\b caractere : ");
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str10);
+	ft_strcp = ft_strcpy(dest, str10);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str10);
+	strcp = strcpy(dest, str10);
 	// printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	printf("whith \\t caractere : ");
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str11);
+	ft_strcp = ft_strcpy(dest, str11);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str11);
+	strcp = strcpy(dest, str11);
 	// printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	printf("whith \\n caractere : ");
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str12);
+	ft_strcp = ft_strcpy(dest, str12);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str12);
+	strcp = strcpy(dest, str12);
 	// printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	printf("whith \\v caractere : ");
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str13);
+	ft_strcp = ft_strcpy(dest, str13);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str13);
+	strcp = strcpy(dest, str13);
 	// printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	printf("whith \\f caractere : ");
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	ft_strcp = ft_strcpy(str1, str14);
+	ft_strcp = ft_strcpy(dest, str14);
 	memset(dest, 0, 20);
-	strcp = strcpy(str1, str14);
+	strcp = strcpy(dest, str14);
 	// printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
 	printf("whith \\r caractere : ");
+	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	ft_strcp = ft_strcpy(dest, long_string);
+	memset(dest, 0, 20);
+	strcp = strcpy(dest, long_string);
+	// printf("ft_strcpy : %s || strcpy : %s", ft_strcp, strcp);
+	printf("whith long string : ");
 	strcmp(ft_strcp, strcp) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 }
 
@@ -183,51 +192,48 @@ void ft_test_strcmp()
 	ft_strcmp("\r", "\r") == strcmp("\r", "\r") ? printf(" ✅\n") : printf(" ❌\n");
 	printf("ft_strcmp : %d || strcmp : %d", ft_strcmp("a", "z"), strcmp("a", "z"));
 	ft_strcmp("a", "z") == strcmp("a", "z") ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strcmp : %d || strcmp : %d", ft_strcmp(long_string, long_string), strcmp(long_string, long_string));
+	ft_strcmp(long_string, long_string) == strcmp(long_string, long_string) ? printf(" ✅\n") : printf(" ❌\n");
 }
 
 void ft_test_write()
 {
 	printf("\n\n###################   ft_write   ###################\n");
-	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "Hello", 5), write(1, "Hello", 5));
-	ft_write(1, "Hello", 5) == write(1, "Hello", 5) ? printf(" ✅\n") : printf(" ❌\n");
-	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "coucou", 6), write(1, "coucou", 6));
-	ft_write(1, "coucou", 6) == write(1, "coucou", 6) ? printf(" ✅\n") : printf(" ❌\n");
-	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "123456789", 9), write(1, "123456789", 9));
-	ft_write(1, "123456789", 9) == write(1, "123456789", 9) ? printf(" ✅\n") : printf(" ❌\n");
-	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, " ", 1), write(1, " ", 1));
-	ft_write(1, " ", 1) == write(1, " ", 1) ? printf(" ✅\n") : printf(" ❌\n");
-	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "ca va", 5), write(1, "ca va", 5));
-	ft_write(1, "ca va", 5) == write(1, "ca va", 5) ? printf(" ✅\n") : printf(" ❌\n");
-	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "c'est moi", 9), write(1, "c'est moi", 9));
-	ft_write(1, "c'est moi", 9) == write(1, "c'est moi", 9) ? printf(" ✅\n") : printf(" ❌\n");
-	printf(" // ft_write : %zd || write : %zd // ", ft_write(1, "c'est moi aussi", 15), write(1, "c'est moi aussi", 15));
-	ft_write(1, "c'est moi aussi", 15) == write(1, "c'est moi aussi", 15) ? printf(" ✅\n") : printf(" ❌\n");
-	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\a", 1), write(1, "\a", 1));
-	ft_write(1, "\a", 1) == write(1, "\a", 1) ? printf(" ✅\n") : printf(" ❌\n");
-	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\b", 1), write(1, "\b", 1));
-	ft_write(1, "\b", 1) == write(1, "\b", 1) ? printf(" ✅\n") : printf(" ❌\n");
-	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\t", 1), write(1, "\t", 1));
-	ft_write(1, "\t", 1) == write(1, "\t", 1) ? printf(" ✅\n") : printf(" ❌\n");
-	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\n", 1), write(1, "\n", 1));
-	ft_write(1, "\n", 1) == write(1, "\n", 1) ? printf(" ✅\n") : printf(" ❌\n");
-	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\v", 1), write(1, "\v", 1));
-	ft_write(1, "\v", 1) == write(1, "\v", 1) ? printf(" ✅\n") : printf(" ❌\n");
-	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\f", 1), write(1, "\f", 1));
-	ft_write(1, "\f", 1) == write(1, "\f", 1) ? printf(" ✅\n") : printf(" ❌\n");
-	printf("ft_write : %zd || write : %zd // ", ft_write(1, "\r", 1), write(1, "\r", 1));
-	ft_write(1, "\r", 1) == write(1, "\r", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	int fd = open("file_for_test/write_out.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "Hello", 5), write(fd, "Hello", 5));
+	ft_write(fd, "Hello", 5) == write(fd, "Hello", 5) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "coucou", 6), write(fd, "coucou", 6));
+	ft_write(fd, "coucou", 6) == write(fd, "coucou", 6) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "123456789", 9), write(fd, "123456789", 9));
+	ft_write(fd, "123456789", 9) == write(fd, "123456789", 9) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, " ", 1), write(fd, " ", 1));
+	ft_write(fd, " ", 1) == write(fd, " ", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "ca va", 5), write(fd, "ca va", 5));
+	ft_write(fd, "ca va", 5) == write(fd, "ca va", 5) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "c'est moi", 9), write(fd, "c'est moi", 9));
+	ft_write(fd, "c'est moi", 9) == write(fd, "c'est moi", 9) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "c'est moi aussi", 15), write(fd, "c'est moi aussi", 15));
+	ft_write(fd, "c'est moi aussi", 15) == write(fd, "c'est moi aussi", 15) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "\a", 1), write(fd, "\a", 1));
+	ft_write(fd, "\a", 1) == write(fd, "\a", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "\b", 1), write(fd, "\b", 1));
+	ft_write(fd, "\b", 1) == write(fd, "\b", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "\t", 1), write(fd, "\t", 1));
+	ft_write(fd, "\t", 1) == write(fd, "\t", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "\n", 1), write(fd, "\n", 1));
+	ft_write(fd, "\n", 1) == write(fd, "\n", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "\v", 1), write(fd, "\v", 1));
+	ft_write(fd, "\v", 1) == write(fd, "\v", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "\f", 1), write(fd, "\f", 1));
+	ft_write(fd, "\f", 1) == write(fd, "\f", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, "\r", 1), write(fd, "\r", 1));
+	ft_write(fd, "\r", 1) == write(fd, "\r", 1) ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_write : %zd || write : %zd ", ft_write(fd, long_string, 1000), write(fd, long_string, 1000));
+	ft_write(fd, long_string, 1000) == write(fd, long_string, 1000) ? printf(" ✅\n") : printf(" ❌\n");
+	fd = open("file_for_test/no_perm", O_WRONLY | O_CREAT | O_TRUNC, 0000);
+	ft_write(-1, "a", 1);
+	perror("ERROR ");
 }
-
-void ft_test_read()
-{
-	char	buf[100];
-	printf("\n\n###################   ft_read   ###################\n");
-	ssize_t	ft_read_value = ft_read(0, buf, 100);
-	ssize_t read_value = read(0, buf, 100);
-	printf("ft_read : %zd || read : %zd ", ft_read_value, read_value);
-	ft_read_value == read_value ? printf(" ✅\n") : printf(" ❌\n");
-}
-
 
 static void	do_test(char *path)
 {
@@ -251,13 +257,16 @@ static void	do_test(char *path)
 		printf("ft_read with %s file ✅\n", path);
 }
 
-void	ft_main_read(void)
+void	ft_test_read(void)
 {
 	printf("\n\n###################   ft_read   ###################\n");
 	do_test("./Makefile");
-	do_test("./NotExist");
 	do_test("./main.c");
-	do_test("./empty.txt");
+	do_test("./file_for_test/empty.txt");
+	do_test("./NotExist");
+	perror("ERROR");
+	do_test("./file_for_test/no_perm");
+	perror("ERROR");
 }
 
 void ft_test_strdup()
@@ -292,6 +301,7 @@ void ft_test_strdup()
 	char	*strcp12 = ft_strdup(str12);
 	char	*strcp13 = ft_strdup(str13);
 	char	*strcp14 = ft_strdup(str14);
+	char	*strcpLONG = ft_strdup(long_string);
 
 	printf("ft_strdup : %s || strdup : %s", strcp1, strdup(str1));
 	strcmp(strcp1, strdup(str1)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
@@ -335,6 +345,9 @@ void ft_test_strdup()
 	printf("ft_strdup : %s || strdup : %s", strcp14, strdup(str14));
 	strcmp(strcp14, strdup(str14)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
+	printf("ft_strdup : with long string");
+	strcmp(strcpLONG, strdup(long_string)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
 	free(strcp1);
 	free(strcp2);
 	free(strcp3);
@@ -349,6 +362,7 @@ void ft_test_strdup()
 	free(strcp12);
 	free(strcp13);
 	free(strcp14);
+	free(strcpLONG);
 }
 
 int	main(void)
@@ -358,7 +372,6 @@ int	main(void)
 	ft_test_strcmp();
 	ft_test_write();
 	ft_test_strdup();
-	// ft_test_read();
-	ft_main_read();
+	ft_test_read();
 	return (0);
 }	
