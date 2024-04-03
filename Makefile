@@ -9,7 +9,7 @@ OBJS_BONUS = $(addprefix obj_bonus/,$(SRCS_BONUS:.s=.o))
 
 CC = cc
 NASM = nasm
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 LIB = -L. -lasm
 
 all: obj $(NAME)

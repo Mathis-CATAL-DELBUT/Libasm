@@ -286,6 +286,7 @@ void ft_test_strdup()
 	char	*str12 = "\v";
 	char	*str13 = "\f";
 	char	*str14 = "\r";
+	char 	*long_s = long_string;	
 
 	char	*strcp1 = ft_strdup(str1);
 	char	*strcp2 = ft_strdup(str2);
@@ -301,52 +302,69 @@ void ft_test_strdup()
 	char	*strcp12 = ft_strdup(str12);
 	char	*strcp13 = ft_strdup(str13);
 	char	*strcp14 = ft_strdup(str14);
-	char	*strcpLONG = ft_strdup(long_string);
+	char	*strcpLONG = ft_strdup(long_s);
 
-	printf("ft_strdup : %s || strdup : %s", strcp1, strdup(str1));
-	strcmp(strcp1, strdup(str1)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	str1 = strdup(str1);
+	str2 = strdup(str2);
+	str3 = strdup(str3);
+	str4 = strdup(str4);
+	str5 = strdup(str5);
+	str6 = strdup(str6);
+	str7 = strdup(str7);
+	str8 = strdup(str8);
+	str9 = strdup(str9);
+	str10 = strdup(str10);
+	str11 = strdup(str11);
+	str12 = strdup(str12);
+	str13 = strdup(str13);
+	str14 = strdup(str14);
+	long_s = strdup(long_s);
+	
 
-	printf("ft_strdup : %s || strdup : %s", strcp2, strdup(str2));
-	strcmp(strcp2, strdup(str2)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp1, str1);
+	strcmp(strcp1, str1) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp3, strdup(str3));
-	strcmp(strcp3, strdup(str3)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp2, str2);
+	strcmp(strcp2, str2) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp4, strdup(str4));
-	strcmp(strcp4, strdup(str4)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp3, str3);
+	strcmp(strcp3, str3) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp5, strdup(str5));
-	strcmp(strcp5, strdup(str5)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp4, str4);
+	strcmp(strcp4, str4) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp6, strdup(str6));
-	strcmp(strcp6, strdup(str6)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp5, str5);
+	strcmp(strcp5, str5) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp7, strdup(str7));
-	strcmp(strcp7, strdup(str7)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp6, str6);
+	strcmp(strcp6, str6) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp8, strdup(str8));
-	strcmp(strcp8, strdup(str8)) == 0 ? printf(" ✅\n") : printf(" ❌\n");	
+	printf("ft_strdup : %s || strdup : %s", strcp7, str7);
+	strcmp(strcp7, str7) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp9, strdup(str9));
-	strcmp(strcp9, strdup(str9)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp8, str8);
+	strcmp(strcp8, str8) == 0 ? printf(" ✅\n") : printf(" ❌\n");	
 
-	printf("ft_strdup : %s || strdup : %s", strcp10, strdup(str10));
-	strcmp(strcp10, strdup(str10)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp9, str9);
+	strcmp(strcp9, str9) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp11, strdup(str11));
-	strcmp(strcp11, strdup(str11)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp10, str10);
+	strcmp(strcp10, str10) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp12, strdup(str12));
-	strcmp(strcp12, strdup(str12)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp11, str11);
+	strcmp(strcp11, str11) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp13, strdup(str13));
-	strcmp(strcp13, strdup(str13)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp12, str12);
+	strcmp(strcp12, str12) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
-	printf("ft_strdup : %s || strdup : %s", strcp14, strdup(str14));
-	strcmp(strcp14, strdup(str14)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	printf("ft_strdup : %s || strdup : %s", strcp13, str13);
+	strcmp(strcp13, str13) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+
+	printf("ft_strdup : %s || strdup : %s", strcp14, str14);
+	strcmp(strcp14, str14) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
 	printf("ft_strdup : with long string");
-	strcmp(strcpLONG, strdup(long_string)) == 0 ? printf(" ✅\n") : printf(" ❌\n");
+	strcmp(strcpLONG, long_string) == 0 ? printf(" ✅\n") : printf(" ❌\n");
 
 	free(strcp1);
 	free(strcp2);
@@ -363,6 +381,21 @@ void ft_test_strdup()
 	free(strcp13);
 	free(strcp14);
 	free(strcpLONG);
+	free(str1);
+	free(str2);
+	free(str3);
+	free(str4);
+	free(str5);
+	free(str6);
+	free(str7);
+	free(str8);
+	free(str9);
+	free(str10);
+	free(str11);
+	free(str12);
+	free(str13);
+	free(str14);
+	free(long_s);
 }
 
 int	main(void)
