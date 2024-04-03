@@ -11,16 +11,16 @@ ft_list_remove_if:
     init:
         mov r14, rsi
         mov r12, [rdi]
-        cmp r12, 0
-        je  exit
-        mov r13, [r12 + 8]
+        mov r13, 0
         jmp remove_if
     
     remove_if:
+        cmp r12, 0
+        je  exit
         push rdi
         push rdx
         push rcx
-        mov rdi, [r13]
+        mov rdi, [r12]
         mov rsi, r14
         xor rax, rax
         call rdx
@@ -32,41 +32,40 @@ ft_list_remove_if:
         jne  increment
 
     increment:
-        mov r12, r13
-        mov r13, [r13 + 8]
-        cmp r13, 0
-        je  exit
+        mov r13, r12
+        mov r12, [r12 + 8]
         jmp remove_if
 
     remove:
-        mov r11, [r13 + 8]
-        mov [r12 + 8], r11
+        cmp r13, 0
+        je  remove_first
+        mov r11, [r12 + 8]
+        mov [r13 + 8], r11
         push rdi
         push rdx
         push rcx
-        mov rdi, r13
+        mov rdi, [r12]
         call rcx
         pop rcx
         pop rdx
         pop rdi
-        mov r13, [r13 + 8]
-        cmp r13, 0
-        je  exit
+        mov r12, [r12 + 8]
         jmp remove_if
 
-    ;only_one:
-        ;mov r12, [rdi]
-        ;push rdi
-        ;push rdx
-        ;push rcx
-        ;mov rdi, r13
-        ;mov rsi, r14
-        ;call rdx
-        ;pop rcx
-        ;pop rdx
-        ;pop rdi
-        ;cmp rax, 0
-        ;je  remove
+    remove_first:
+        mov r8, [r12 + 8]
+        mov [rdi], r8
+        mov r9, [r12]
+        mov r12, [r12 + 8]
+        push rdi
+        push rdx
+        push rcx
+        mov rdi, [r9]
+        call rcx
+        pop rcx
+        pop rdx
+        pop rdi
+        jmp remove_if
 
     exit:
         ret

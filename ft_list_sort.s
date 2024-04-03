@@ -7,6 +7,8 @@ ft_list_sort:
         mov     rbx, [rdi]      ; rbx = begin_list
         mov     r10, rsi        ; r10 = cmp
         mov     r12, [rdi]      ; r12 = premier maillon
+        cmp     r12, 0          ; Si le premier maillon est NULL, on sort
+        je      exit
         mov     r13, [r12 + 8]  ; r13 = maillon suivant
         cmp     r13, 0          ; Si le maillon suivant est NULL, on sort
         je      exit            

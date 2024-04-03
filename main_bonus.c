@@ -394,14 +394,15 @@ void display_list(t_list **begin) {
 }
 
 int    cmp_remove(int *a, int *b) {
-	printf("a : %d\n", *a);
-	printf("b : %d\n", *b);
-	printf("--------------------------\n");
+	// printf("a : %d\n", *a);
+	// printf("b : %d\n", *b);
+	// printf("--------------------------\n");
 
     if (*a == *b)
         return (0);
     return (1); 
 }
+
 void ft_test_remove_if()
 {
     printf("\n\n###################   ft_list_remove_if   ###################\n");
@@ -432,9 +433,10 @@ void ft_test_remove_if()
 
     display_list(&my_list);
 	printf("\n--------------------------\n");
-	int value__________ = 4;
+	int value__________ = 1;
     ft_list_remove_if(&my_list, &value__________, cmp_remove, free);
     display_list(&my_list);
+	ft_clear_list(my_list, free);
 
 }
 

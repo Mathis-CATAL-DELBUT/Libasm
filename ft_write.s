@@ -9,7 +9,7 @@ ft_write:
     mov rax, 1                  ; syscall write
     syscall                     ; appel systeme pour write qui stocke le code erreur dans rax
     cmp rax, 0                  ; on compare le resultat de syscall avec 0
-    je error                    ; si le resultat est 0 on jump a error
+    jl error                    ; si le resultat est 0 on jump a error
 
     leave
     ret
