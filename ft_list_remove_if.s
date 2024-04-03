@@ -1,6 +1,7 @@
 section .text
     global ft_list_remove_if ; void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
     extern ft_list_size
+    extern free
 
     ;   rdi = t_list **begin_list
     ;   rsi = void *data_ref
@@ -48,19 +49,35 @@ ft_list_remove_if:
         pop rcx
         pop rdx
         pop rdi
+        push rdi
+        push rdx
+        push rcx
+        mov rdi, r12
+        call free
+        pop rcx
+        pop rdx
+        pop rdi
         mov r12, [r12 + 8]
         jmp remove_if
 
     remove_first:
         mov r8, [r12 + 8] ; tmp = cur->next
         mov [rdi], r8 ; *begin_list = tmp
-        mov r9, [r12] ; tmp = cur->data
+        mov r9, r12 ; tmp = cur->data
         mov r12, [r12 + 8] ; 
         push rdi
         push rdx
         push rcx
-        mov rdi, r9
+        mov rdi, [r9]
         call rcx
+        pop rcx
+        pop rdx
+        pop rdi
+        push rdi
+        push rdx
+        push rcx
+        mov rdi, r9
+        call free
         pop rcx
         pop rdx
         pop rdi

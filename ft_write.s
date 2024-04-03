@@ -3,15 +3,11 @@ section .text                   ; section de code (3 section disponible : .text 
     extern	__errno_location    
 
 ft_write:
-    push rbp                    ; sauvegarde de la base du pointeur
-    mov rbp, rsp                ; rbp pointe sur le debut de la pile
 
     mov rax, 1                  ; syscall write
     syscall                     ; appel systeme pour write qui stocke le code erreur dans rax
     cmp rax, 0                  ; on compare le resultat de syscall avec 0
     jl error                    ; si le resultat est 0 on jump a error
-
-    leave
     ret
 
 error:
@@ -20,5 +16,4 @@ error:
 	call	__errno_location	; on appelle __errno_location pour modifier errno
 	mov		[rax], 	rdi		    ; on met le resultat de syscall dans errno car __errno_location renvoie un pointeur sur errno donc rax == adresse de errno
 	mov		rax, -1		        ; on met -1 dans rax pour signaler une erreur
-    leave                       ; on nettoie la pile === pop rbp
     ret					        ; return rax
