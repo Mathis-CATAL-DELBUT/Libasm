@@ -19,11 +19,6 @@ ft_strcmp:                  ; fonction ft_strcmp
         jmp .loop           ; retour a .loop
 
     .end_loop:
-        ;movzx rax, al      ; code pour avoir la valeur de la difference entre des deux chaines de caractere
-        ;movzx r10, bl
-        ;sub rax, r10
-        ;leave
-        ;ret
         cmp al, bl          ; compare al a bl
         je .equal           ; si al = bl alors aller a .equal
         jg .positive        ; si al > bl alors aller a .positive

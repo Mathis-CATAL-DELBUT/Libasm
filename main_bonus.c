@@ -220,6 +220,12 @@ void	ft_test_list_size(void)
 	t_list	*list;
 	int		size;
 
+	list = NULL;
+	size = ft_list_size(list);
+	if (size != 0)
+		printf("ft_list_size : %d || list size : %d ❌\n", size, 0);
+	else
+		printf("ft_list_size : %d || list size : %d ✅\n", size, 0);
 	list = malloc(sizeof(t_list));
 	if (list == NULL)
 		return;
@@ -261,48 +267,16 @@ void	ft_test_list_size(void)
 	ft_clear_list(list, NULL);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 static int	cmp(int *a, int *b)
 {
-	return (*a - *b);
+	if (*a > *b)
+		return (1);
+	return (0);
 }
 
-static void	do_test_check(t_list *list)
+void	ft_test_list_sort(void)
 {
-	int		i;
-
-	i = 0;
-	while (++i < 10 && list)
-	{
-		if (*(int *)list->data != i)
-		{
-			printf("\nKO: diff expect %d, ft %d\n", i, *(int *)list->data);
-			exit(1);
-		}
-		list = list->next;
-	}
-	if (list && i != 10)
-	{
-		printf("KO: diff end list %p, i %d\n", list, i);
-		exit(1);
-	}
-}
-
-static void	do_test(void)
-{
+	printf("\n\n###################   ft_list_sort   ###################\n");
 	int		i;
 	int		*n;
 	t_list	*list;
@@ -334,38 +308,135 @@ static void	do_test(void)
 		printf("%d ", *(int *)tmp->data);
 		tmp = tmp->next;
 	}
+	i = 1;
+	while (i < 10)
+	{
+		if (*(int *)list->data != i)
+		{
+			printf("ft_list_sort : ❌\n");
+			break ;
+		}
+		if (i == 9)
+			printf("\nft_list_sort : ✅\n");
+		list = list->next;
+		i++;
+	}
 
-	do_test_check(list);
 	ft_clear_list(list, free);
 }
 
-void	ft_test_list_sort(void)
-{
-	printf("\n\n###################   ft_list_sort   ###################\n");
-	do_test();
-	printf("\nSUCCESS!\n");
-}
-// t_list	*ft_list_sort(t_list *lst, int (*cmp)())
-// {
-// 	void	*tempo;
-// 	t_list	*overflow;
 
-// 	overflow = lst;
-// 	while (lst->next)
-// 	{
-// 		if (((*cmp)(lst->content, lst->next->content)) == 0)
-// 		{
-// 			tempo = lst->content;
-// 			lst->content = lst->next->content;
-// 			lst->next->content = tempo;
-// 			lst = overflow;
-// 		}
-// 		else
-// 			lst = lst->next;
-// 	}
-// 	lst = overflow;
-// 	return (lst);
+// static int	cmp_remove(int *a, int *b)
+// {
+// 	if (*a == *b)
+// 		return (0);
+// 	return (1);
 // }
+
+// void ft_test_remove_if()
+// {
+// 	printf("\n\n###################   ft_list_remove_if   ###################\n");
+// 	t_list	*list;
+// 	t_list	*tmp;
+// 	int		i;
+// 	int		*data_ref;
+
+	// list = malloc(sizeof(t_list));
+	// list->data = malloc(sizeof(int));
+	// *(int *)list->data = 1;
+	// list->next = 0;
+// 	i = 1;
+// 	while (++i < 10)
+// 	{
+// 		data_ref = malloc(sizeof(int));
+// 		*data_ref = i;
+// 		ft_list_push_front(&list, data_ref);
+// 	}
+// 	tmp = list;
+// 	printf("before remove: ");
+// 	while (list)
+// 	{
+// 		printf("%d ", *(int *)list->data);
+// 		list = list->next;
+// 	}
+// 	list = tmp;
+// 	ft_list_remove_if(&list, (void *)5, cmp_remove, free);
+// 	printf("\nafter remove: ");
+// 	while (tmp)
+// 	{
+// 		printf("%d ", *(int *)tmp->data);
+// 		tmp = tmp->next;
+// 	}
+// 	i = 1;
+// 	while (i < 10)
+// 	{
+// 		if (*(int *)list->data == 5)
+// 		{
+// 			printf("ft_list_remove_if : ❌\n");
+// 			break ;
+// 		}
+// 		if (i == 9)
+// 			printf("\nft_list_remove_if : ✅\n");
+// 		list = list->next;
+// 		i++;
+// 	}
+// 	ft_clear_list(list, free);
+
+// }
+
+
+void display_list(t_list **begin) {
+    t_list *tmp = *begin;
+    while (tmp) {
+        printf("%d\n", *(int *)tmp->data);
+        tmp = tmp->next;
+    }
+}
+
+int    cmp_remove(int *a, int *b) {
+	printf("a : %d\n", *a);
+	printf("b : %d\n", *b);
+	printf("--------------------------\n");
+
+    if (*a == *b)
+        return (0);
+    return (1); 
+}
+void ft_test_remove_if()
+{
+    printf("\n\n###################   ft_list_remove_if   ###################\n");
+
+	int value_ = 7;
+
+    t_list *my_list = malloc(sizeof(t_list));
+    my_list->data = &value_;
+    my_list->next = NULL;
+
+    // int value__ = 5;
+    // ft_list_push_front(&my_list, &value__);
+
+    // int value___ = 3;
+    // ft_list_push_front(&my_list, &value___);
+
+    int value____ = 8;
+    ft_list_push_front(&my_list, &value____);
+
+    int value_____ = 2;
+    ft_list_push_front(&my_list, &value_____);
+
+    int value______ = 1;
+    ft_list_push_front(&my_list, &value______);
+
+	int valuee_____ = 4;
+    ft_list_push_front(&my_list, &valuee_____);
+
+    display_list(&my_list);
+	printf("\n--------------------------\n");
+	int value__________ = 4;
+    ft_list_remove_if(&my_list, &value__________, cmp_remove, free);
+    display_list(&my_list);
+
+}
 
 int	main(void)
 {
@@ -373,5 +444,6 @@ int	main(void)
 	ft_test_list_push_front();
 	ft_test_list_size();
 	ft_test_list_sort();
+	ft_test_remove_if();
 	return (0);
 }
