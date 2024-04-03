@@ -38,6 +38,10 @@ main: obj $(NAME)
 main_bonus: $(OBJS_BONUS) main_bonus.c
 	$(CC) $(CFLAGS) -o main_bonus main_bonus.c $(LIB)
 
+tripouille:
+	cp -r /mnt/nfs/homes/mcatal-d/42/libasmTester .
+	cd libasmTester && make a
+
 clean:
 	rm -rf obj obj_bonus libasm.h.gch .gdb_history \
 	peda-session-main.txt peda-session-main_bonus.txt
@@ -47,4 +51,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re main bonus
+.PHONY: all clean fclean re main bonus tripouille
