@@ -294,7 +294,7 @@ void	ft_test_list_sort(void)
 		ft_list_push_front(&list, n);
 	}
 	tmp = list;
-	printf("before sort: ");
+	printf("Before sort: ");
 	while (list)
 	{
 		printf("%d ", *(int *)list->data);
@@ -302,7 +302,7 @@ void	ft_test_list_sort(void)
 	}
 	list = tmp;
 	ft_list_sort(&list, cmp);
-	printf("\nafter sort: ");
+	printf("\nAfter sort: ");
 	while (tmp)
 	{
 		printf("%d ", *(int *)tmp->data);
@@ -331,11 +331,98 @@ void	ft_test_list_sort(void)
 	}
 }
 
+int cmp_int(void *a, void *b) {
+	int *int_a = (int *)a;
+	int *int_b = (int *)b;
+	return *int_a == *int_b ? 0 : 1;
+}
+
+void free_int(void *data) {
+    free((int *)data);
+}
+
+void ft_test_remove_if(void)
+{
+    printf("\n\n###################   ft_list_remove_if   ###################\n");
+    
+	t_list *list = NULL;
+    
+	int values[] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    int value_to_remove = 5;
+
+    
+	for (int i = 0; i < 10; i++) {
+        int *n = malloc(sizeof(int));
+        *n = values[i];
+        ft_list_push_front(&list, n);
+    }
+
+    t_list *current = list;
+	printf("Before removal %d:\n", value_to_remove);
+	while (current) {
+		printf("%d ", *((int *)current->data));
+		current = current->next;
+	}
+
+    ft_list_remove_if(&list, &value_to_remove, cmp_int, free_int);
+
+    printf("\nAfter removal %d: \n", value_to_remove);
+    current = list;
+    while (current) {
+        printf("%d ", *((int *)current->data));
+        current = current->next;
+    }
+    printf("\n");
+
+	current = list;
+	while (current) {
+		if (*((int *)current->data) == value_to_remove) {
+			printf("ft_list_remove_if  : ❌\n");
+			break ;
+		}
+		if (current->next == NULL)
+			printf("ft_list_remove_if  : ✅\n");
+		current = current->next;
+	}
+
+	value_to_remove = 1;
+	ft_list_remove_if(&list, &value_to_remove, cmp_int, free_int);
+	current = list;
+	while (current) {
+		if (*((int *)current->data) == value_to_remove) {
+			printf("ft_list_remove_if first value : ❌\n");
+			break ;
+		}
+		if (current->next == NULL)
+			printf("ft_list_remove_if first value : ✅\n");
+		current = current->next;
+	}
+
+	value_to_remove = 10;
+	ft_list_remove_if(&list, &value_to_remove, cmp_int, free_int);
+	current = list;
+	while (current) {
+		if (*((int *)current->data) == value_to_remove) {
+			printf("ft_list_remove_if last value : ❌\n");
+			break ;
+		}
+		if (current->next == NULL)
+			printf("ft_list_remove_if last value : ✅\n");
+		current = current->next;
+	}
+
+
+    ft_clear_list(list, free_int);
+}
+
+
+
 int	main(void)
 {
 	ft_test_atoi_base();
 	ft_test_list_push_front();
 	ft_test_list_size();
 	ft_test_list_sort();
+	ft_test_remove_if();
 	return (0);
 }
